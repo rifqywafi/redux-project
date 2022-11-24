@@ -1,0 +1,40 @@
+{
+  "pegawai": [
+    {
+      "nama": "aaa",
+      "provinsi": "RIAU",
+      "alamat": "aa",
+      "tempat_lahir": "aa",
+      "tanggal_lahir": "2022-11-23",
+      "nomor_telp": "222",
+      "id": "1"
+    },
+    {
+      "nama": "Rifqy",
+      "provinsi": "ACEH",
+      "alamat": "as",
+      "tempat_lahir": "as",
+      "tanggal_lahir": "2022-11-24",
+      "nomor_telp": "021212",
+      "id": "12"
+    },
+    {
+      "nama": "ko",
+      "provinsi": "SUMATERA BARAT",
+      "alamat": "pokko",
+      "tempat_lahir": "kok",
+      "tanggal_lahir": "2022-11-24",
+      "nomor_telp": "023",
+      "id": "9999"
+    },
+    {
+      "nama": "nkn",
+      "provinsi": "SUMATERA SELATAN",
+      "alamat": "asas",
+      "tempat_lahir": "asas",
+      "tanggal_lahir": "2022-11-24",
+      "nomor_telp": "232",
+      "id": "221"
+    }
+  ]
+}
