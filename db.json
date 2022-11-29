@@ -6,7 +6,7 @@
       "alamat": "aa",
       "tempat_lahir": "aa",
       "tanggal_lahir": "2022-11-23",
-      "nomor_telp": "222",
+      "nomor_telp": "087777",
       "id": "1"
     },
     {
@@ -20,7 +20,7 @@
     },
     {
       "nama": "ko",
-      "provinsi": "SUMATERA BARAT",
+      "provinsi": "RIAU",
       "alamat": "pokko",
       "tempat_lahir": "kok",
       "tanggal_lahir": "2022-11-24",
@@ -29,12 +29,21 @@
     },
     {
       "nama": "nkn",
-      "provinsi": "SUMATERA SELATAN",
+      "provinsi": "RIAU",
       "alamat": "asas",
       "tempat_lahir": "asas",
       "tanggal_lahir": "2022-11-24",
       "nomor_telp": "232",
       "id": "221"
+    },
+    {
+      "nama": "hu",
+      "provinsi": "ACEH",
+      "alamat": "uu",
+      "tempat_lahir": "uu",
+      "tanggal_lahir": "2022-11-28",
+      "nomor_telp": "09877",
+      "id": "99"
     }
   ]
 }

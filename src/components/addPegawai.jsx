@@ -5,6 +5,7 @@ import { handleChange, handleChangeWithError, handleInputError } from "../functi
 import { savePegawai, pegawaiSelectors, getPegawai } from '../features/pegawai/pegawaiSlice';
 import { getProvinsi, provinsiSelectors } from "../features/pegawai/provinsiSlice";
 import { useNavigate } from 'react-router-dom';
+import  dateFormat from 'dateformat';
 import ReactSelect from "react-select";
 
 const AddPegawai = () => {
@@ -81,6 +82,9 @@ const AddPegawai = () => {
         alert("Input Berhasil")
         navigate('/')
       }
+    }else{
+      alert("Terjadi Error!")
+      return;
     }
   }
 
@@ -157,7 +161,8 @@ const AddPegawai = () => {
             <input type="text" className="input form-control"
               placeholder="Isi Nomor Telepon Anda dengan Format Angka"
               value={nomor_telp}
-              onChange={(e) => handleChangeWithError(e, setNomorTelp, nomor_telp, noHpValidator, setErrNoHp)}
+              onInput = {(e) => handleInputError(e, nomor_telp, noHpValidator, setErrNoHp)}
+              onChange = {(e) => handleChange(e, setNomorTelp)}
             />
             {/* {console.log(nomor_telp)} */}
             {errNoHp && <p className="text-danger">Masukkan Format No.Hp Dengan Benar</p>}

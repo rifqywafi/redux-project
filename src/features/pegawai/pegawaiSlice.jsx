@@ -18,6 +18,7 @@ export const savePegawai = createAsyncThunk("pegawai/savePegawai", async({nama, 
     }); 
     return response.data; 
 }); 
+
 export const updatePegawai = createAsyncThunk("pegawai/updatePegawai", async({nama, provinsi, alamat, tempat_lahir, tanggal_lahir,nomor_telp, id}) => { 
     const response = await axios.patch(`http://localhost:5000/pegawai/${id}`, {
         nama, 
@@ -58,8 +59,6 @@ const pegawaiSlice = createSlice ({
         }
     }
 }); 
-
-
 
 export const pegawaiSelectors = pegawaiEntity.getSelectors (state => state.pegawai); 
 export default pegawaiSlice.reducer; 

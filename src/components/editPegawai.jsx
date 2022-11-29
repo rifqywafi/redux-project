@@ -136,7 +136,7 @@ const EditPegawai = () => {
               placeholder="Isi Nomor Telepon Anda dengan Format Angka"
               value={nomor_telp}
               onChange={(e) => handleChangeWithError(e, setNomorTelp, nomor_telp, noHpValidator, setErrNoHp)}
-            />
+             />
             {errNoHp && <p className="text-danger">Masukkan Format No.Hp Dengan Benar </p>}
           </div>
         </div>
