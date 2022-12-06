@@ -40,7 +40,7 @@ const AddPegawai = () => {
   const buttonDisabled = [
     id.length < 1,
     nama.length < 1,
-    provinsiOpt.length < 1,
+    provinsiOpt === null,
     alamat.length < 1,
     tempat_lahir.length < 1,
     tanggal_lahir.length < 1,
@@ -161,8 +161,7 @@ const AddPegawai = () => {
             <input type="text" className="input form-control"
               placeholder="Isi Nomor Telepon Anda dengan Format Angka"
               value={nomor_telp}
-              onInput = {(e) => handleInputError(e, nomor_telp, noHpValidator, setErrNoHp)}
-              onChange = {(e) => handleChange(e, setNomorTelp)}
+              onChange = {(e) => handleChangeWithError(e, setNomorTelp, nomor_telp, noHpValidator, setErrNoHp)}
             />
             {/* {console.log(nomor_telp)} */}
             {errNoHp && <p className="text-danger">Masukkan Format No.Hp Dengan Benar</p>}

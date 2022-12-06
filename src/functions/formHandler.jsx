@@ -11,8 +11,7 @@ export const handleChangeWithError = ( e, setValue, value, validator, setErrValu
     }
 }
 
-export const handleInputError = (e, value, validator, setErrValue) => {
-  
+export const handleInputError = (value, validator, setErrValue) => {
     if(!validator.test(value)){
       setErrValue(true)
     }else if(validator.test(value)){

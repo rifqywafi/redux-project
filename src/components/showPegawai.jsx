@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { confirmDelete } from '../functions/formHandler';
-import { FaSearch } from 'react-icons/fa';
-import  dateFormat  from 'dateformat';
 import { getPegawai, pegawaiSelectors, deletePegawai } from '../features/pegawai/pegawaiSlice';
 import { Link } from 'react-router-dom';
-
+import DataTable from 'react-data-table-component';
 
 const ShowPegawai = () => {
   const dispatch = useDispatch();
@@ -26,8 +24,69 @@ const ShowPegawai = () => {
     }
   }
 
+  const caseInsensitiveSort = (rowA, rowB) => {
+    const a = rowA.nama.toLowerCase();
+    const b = rowB.nama.toLowerCase();
+
+    if (a > b) {
+        return 1;
+    }
+
+    if (b > a) {
+        return -1;
+    }
+
+    return 0;
+  }
+
+  const columns = [
+    {
+      name: 'NIP',
+      selector: row => row.id,
+      sortable: true 
+    },
+    {
+      name: 'Nama',
+      selector: row => row.nama,
+      sortable: true,
+      sortFunction: caseInsensitiveSort
+    },
+    {
+      name: 'Provinsi',
+      selector: row => row.provinsi
+    },
+    {
+      name: 'Alamat',
+      selector: row => row.alamat
+    },
+    {
+      name: 'Tempat Lahir',
+      selector: row => row.tempat_lahir
+    },
+    {
+      name: 'Tanggal Lahir',
+      selector: row => row.tanggal_lahir
+    },
+    {
+      name: 'Nomor Telp.',
+      selector: row => row.nomor_telp
+    },
+    {
+      name: 'Action',
+      selector: function (row) {
+        return (
+          <>
+            <Link to={`editpegawai/${row.id}`} className='btn btn-sm btn-primary mx-1'>Edit</Link>
+            <button onClick={() => confirmDelete(dispatch, deletePegawai, row.id)} className='btn btn-sm btn-danger mx-1'>Delete</button>
+          </>
+        )
+      }
+    }
+  ]
+
   const [search, setSearch] = useState("");
-  const filteredItems = getFilteredItems(search, pegawai)
+  const filteredPegawai = getFilteredItems(search, pegawai)
+
 
   // const formattedTanggalLahir = dateFormat(tanggal_lahir, "dd-mm-yyyy")
 
@@ -47,45 +106,13 @@ const ShowPegawai = () => {
           <Link to="addpegawai" className='btn btn-success offset-md-7 col-md-1'>Add New</Link>
         </div>
         <div className="row">
-        <table className='table table-striped table-responsive mt-3'>
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>NIP</th>
-              <th>Nama</th>
-              <th>Provinsi</th>
-              <th>Alamat</th>
-              <th>Tempat Lahir</th>
-              <th>Tanggal Lahir</th>
-              <th>Nomor Telp.</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              filteredItems && filteredItems.length > 0 ?
-              filteredItems.map((dataPegawai, index) => (
-                <tr key={dataPegawai.id}>
-                  <td>{index + 1} </td>
-                  <td>{dataPegawai.id}</td>
-                  <td>{dataPegawai.nama}</td>
-                  <td>{dataPegawai.provinsi} </td>
-                  <td>{dataPegawai.alamat}</td>
-                  <td>{dataPegawai.tempat_lahir}</td>
-                  <td>{dataPegawai.tanggal_lahir}</td>
-                  <td>{dataPegawai.nomor_telp}</td>
-                  <td>
-                    <Link to={`editpegawai/${dataPegawai.id}`} className='btn btn-sm btn-primary mx-1'>Edit</Link>
-                    <button onClick={() => confirmDelete(dispatch, deletePegawai, dataPegawai.id)} className='btn btn-sm btn-danger mx-1  '>Delete</button>
-                </td>
-              </tr>
-            )
-            )
-            : <tr><td className="text-center" colSpan="9"> --- No Data Available ---</td></tr>
-            }
-
-          </tbody>
-        </table>
+        <DataTable className='mt-3'
+          columns={columns}
+          data={filteredPegawai}
+          pagination
+          responsive
+          striped
+        />
         </div>
       </div>
     </div>
