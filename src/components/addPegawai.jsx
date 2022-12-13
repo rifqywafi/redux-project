@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { pegawaiIdStorage, provinsiListStorage, noHpValidator, idValidator } from "../consts/pegawai";
-import { handleChange, handleChangeWithError, handleInputError } from "../functions/formHandler";
+import { pegawaiIdStorage, provinsiListStorage} from "../consts/pegawai";
 import { savePegawai, pegawaiSelectors, getPegawai } from '../features/pegawai/pegawaiSlice';
 import { getProvinsi, provinsiSelectors } from "../features/pegawai/provinsiSlice";
 import { useNavigate } from 'react-router-dom';
-import  dateFormat from 'dateformat';
 import ReactSelect from "react-select";
 
 const AddPegawai = () => {
@@ -15,8 +13,8 @@ const AddPegawai = () => {
   const [tempat_lahir, setTempatLahir] = useState("");
   const [tanggal_lahir, setTanggalLahir] = useState("");
   const [nomor_telp, setNomorTelp] = useState("");
-  const [errNoHp, setErrNoHp] = useState(false);
-  const [errId, setErrId] = useState(false);
+  // const [errNoHp, setErrNoHp] = useState(false);
+  // const [errId, setErrId] = useState(false);
   const [id, setId] = useState("");
 
   const dispatch = useDispatch();
@@ -40,12 +38,12 @@ const AddPegawai = () => {
   const buttonDisabled = [
     id.length < 1,
     nama.length < 1,
-    provinsiOpt === null,
+    // provinsiOpt === null,
     alamat.length < 1,
     tempat_lahir.length < 1,
     tanggal_lahir.length < 1,
     nomor_telp.length < 1,
-    errNoHp === true,
+    // errNoHp === true,
   ]
 
   useEffect(() => {
@@ -97,9 +95,9 @@ const AddPegawai = () => {
             <input type="text" className="input form-control"
               placeholder="Isi NIP Anda dengan Format Angka"
               value={id}
-              onChange={(e) => handleChangeWithError(e, setId, id, idValidator, setErrId)}
+              onChange={(e) => setId(e.target.value)}
             />
-            {errId && <p className="text-danger">Masukkan Format NIP Dengan Benar</p>}
+            {/* {errId && <p className="text-danger">Masukkan Format NIP Dengan Benar</p>} */}
           </div>
         </div>
         <div className="form-row">
@@ -161,10 +159,10 @@ const AddPegawai = () => {
             <input type="text" className="input form-control"
               placeholder="Isi Nomor Telepon Anda dengan Format Angka"
               value={nomor_telp}
-              onChange = {(e) => handleChangeWithError(e, setNomorTelp, nomor_telp, noHpValidator, setErrNoHp)}
+              onChange = {(e) => setNomorTelp(e.target.value)}
             />
             {/* {console.log(nomor_telp)} */}
-            {errNoHp && <p className="text-danger">Masukkan Format No.Hp Dengan Benar</p>}
+            {/* {errNoHp && <p className="text-danger">Masukkan Format No.Hp Dengan Benar</p>} */}
           </div>
         </div>
         <div className="field">
