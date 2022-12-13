@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getProvinsi, provinsiSelectors } from "../features/pegawai/provinsiSlice"
 import { useNavigate, useParams } from "react-router-dom";
 import ReactSelect from "react-select";
-import { handleInput, handleChangeWithError } from "../functions/formHandler";
+// import { handleInput, handleChangeWithError } from "../functions/formHandler";
 import { noHpValidator, provinsiListStorage, pegawaiIdStorage } from "../consts/pegawai";
 import { getPegawai, updatePegawai, pegawaiSelectors } from "../features/pegawai/pegawaiSlice";
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,7 +14,7 @@ const EditPegawai = () => {
   const [tempat_lahir, setTempatLahir] = useState("");
   const [tanggal_lahir, setTanggalLahir] = useState("");
   const [nomor_telp, setNomorTelp] = useState("");
-  const [errNoHp, setErrNoHp] = useState(false);
+  // const [errNoHp, setErrNoHp] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ const EditPegawai = () => {
     tempat_lahir.length < 1,
     tanggal_lahir.length < 1,
     nomor_telp.length < 1,
-    errNoHp === true,
+    // errNoHp === true,
   ]
 
   useEffect(() => {
@@ -135,9 +135,9 @@ const EditPegawai = () => {
             <input type="text" className="form-control input"
               placeholder="Isi Nomor Telepon Anda dengan Format Angka"
               value={nomor_telp}
-              onChange={(e) => handleChangeWithError(e, setNomorTelp, nomor_telp, noHpValidator, setErrNoHp)}
+              onChange={(e) => setNomorTelp(e.target.value)}
              />
-            {errNoHp && <p className="text-danger">Masukkan Format No.Hp Dengan Benar </p>}
+            {/* {errNoHp && <p className="text-danger">Masukkan Format No.Hp Dengan Benar </p>} */}
           </div>
         </div>
         <div className="field">
